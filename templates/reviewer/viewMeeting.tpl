@@ -7,8 +7,8 @@
  * $Id$
  *}
 {strip}
-{assign var="meetingId" value=$meeting->getPublicId()}
-{translate|assign:"pageTitleTranslated" key="common.queue.long.viewMeeting" id=$meetingId}
+{assign var="meetingPublicId" value=$meeting->getPublicId()}
+{translate|assign:"pageTitleTranslated" key="common.queue.long.viewMeeting" id=$meetingPublicId}
 {assign var="pageCrumbTitle" value="common.queue.long.viewMeeting"}
 {include file="common/header.tpl"}
 {/strip}
@@ -88,13 +88,14 @@
 	{assign var="submissionCount" value=0}
 	{foreach from=$submissions item=submission}
 	{assign var="proposalId" value=$submission->getProposalId($submission->getLocale())}
+	{assign var="abstract" value=$submission->getLocalizedAbstract()}
 	{assign var="key" value=$submission->getId()}
 	{if $isReviewer}
 	<tr valign="top">
 		<td>{if $proposalId}{$proposalId|escape}{else}&mdash;{/if}</td>
 		<td>{$submission->getDateSubmitted()|date_format:$dateFormatLong}</td>
    		<td>{$submission->getFirstAuthor()|escape}</td>	
-   		<td><a href="{url op="viewProposalFromMeeting" path=$submission->getArticleId()}" class="action">{$submission->getLocalizedTitle()|strip_unsafe_html}</a></td>
+   		<td><a href="{url op="viewProposalFromMeeting" path=$submission->getArticleId()}" class="action">{$abstract->getScientificTitle()|strip_unsafe_html}</a></td>
 		<td align="right">
 			{assign var="proposalStatusKey" value=$submission->getProposalStatusKey()}
 			{translate key=$proposalStatusKey}
@@ -107,7 +108,7 @@
 			<td>{if $proposalId}{$proposalId|escape}{else}&mdash;{/if}</td>
 			<td>{$submission->getDateSubmitted()|date_format:$dateFormatLong}</td>
    			<td>{$submission->getFirstAuthor()|escape}</td>	
-   			<td><a href="{url op="submission" path=$map.$key}" class="action">{$submission->getLocalizedTitle()|strip_unsafe_html}</a></td>
+   			<td><a href="{url op="submission" path=$map.$key}" class="action">{$abstract->getScientificTitle()|strip_unsafe_html}</a></td>
 			<td align="right">
 				{assign var="proposalStatusKey" value=$submission->getProposalStatusKey()}
 				{translate key=$proposalStatusKey}
@@ -177,7 +178,7 @@
 <tr>
 	<td class="label"></td>
 	<td class="value">
-		<input type="hidden" id="meetingId" name="meetingId" value={$meetingId}> </input>
+		<input type="hidden" id="meetingId" name="meetingId" value={$meeting->getId()}> </input>
 		<input type="submit" value="{translate key="common.save"}" class="button defaultButton" /> <input type="button" value="{translate key="common.cancel"}" class="button" onclick="document.location.href='{url op="meetings" escape=false}'" />
 	</td>
 </tr>
