@@ -25,7 +25,7 @@
 	<message key="manager.groups.noneCreated">No Committee have been created.</message>
     <message key="manager.institutions.noneCreated">No institutions have been created.</message>
     <message key="manager.institutions.create">Create a new institution</message>
-        <message key="manager.institutions.form.nameRequired">The name of the institution is required.</message>
+    <message key="manager.institutions.form.nameRequired">The name of the institution is required.</message>
     <message key="manager.institutions.form.regionRequired">The geographical area of the institution is required.</message>
     <message key="manager.institutions.form.typeRequired">The type of the institution is required.</message>
 	<message key="manager.journalManagement">Site Management</message>
