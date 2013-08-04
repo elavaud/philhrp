@@ -70,7 +70,7 @@ class TrackSubmissionHandler extends AuthorHandler {
 		$this->validate($articleId);
 		$authorSubmission =& $this->submission;
 
-		if ($authorSubmission->getStatus() != STATUS_PUBLISHED && $authorSubmission->getStatus() != STATUS_ARCHIVED) {
+		if ($authorSubmission->getStatus() != STATUS_ARCHIVED) {
 			AuthorAction::deleteArticleFile($authorSubmission, $fileId);
 		}
 
@@ -192,7 +192,6 @@ class TrackSubmissionHandler extends AuthorHandler {
 		$this->validate($articleId);
 		$authorSubmission =& $this->submission;
 
-		//if ($authorSubmission->getStatus() != STATUS_PUBLISHED && $authorSubmission->getStatus() != STATUS_ARCHIVED) {
                 if ($authorSubmission->getSubmissionStatus()==PROPOSAL_STATUS_SUBMITTED) {
 			$this->setupTemplate(true, $articleId, 'summary');
 
@@ -252,7 +251,7 @@ class TrackSubmissionHandler extends AuthorHandler {
 		$this->validate($articleId);
 		$authorSubmission =& $this->submission;
 
-		if ($authorSubmission->getStatus() != STATUS_PUBLISHED && $authorSubmission->getStatus() != STATUS_ARCHIVED) {
+		if ($authorSubmission->getStatus() != STATUS_ARCHIVED) {
 			$this->setupTemplate(true, $articleId, 'summary');
 
 			import('classes.submission.form.SuppFileForm');
@@ -280,7 +279,7 @@ class TrackSubmissionHandler extends AuthorHandler {
 		$this->validate($articleId);
 		$authorSubmission =& $this->submission;
 
-		if ($authorSubmission->getStatus() != STATUS_PUBLISHED && $authorSubmission->getStatus() != STATUS_ARCHIVED) {
+		if ($authorSubmission->getStatus() != STATUS_ARCHIVED) {
 			$suppFileId = Request::getUserVar('fileId');
 			$suppFileDao =& DAORegistry::getDAO('SuppFileDAO');
 			$suppFile = $suppFileDao->getSuppFile($suppFileId, $articleId);
@@ -303,7 +302,7 @@ class TrackSubmissionHandler extends AuthorHandler {
 		$authorSubmission =& $this->submission;
 		$this->setupTemplate(true, $articleId, 'summary');
                 
-		if ($authorSubmission->getStatus() != STATUS_PUBLISHED && $authorSubmission->getStatus() != STATUS_ARCHIVED) {
+		if ($authorSubmission->getStatus() != STATUS_ARCHIVED) {
 			$suppFileId = isset($args[0]) ? (int) $args[0] : 0;
 
 			import('classes.submission.form.SuppFileForm');

@@ -294,12 +294,15 @@ class SuppFileForm extends Form {
         if ($this->getData('type') == "Supp File") $message = 'notification.type.suppFile';
                     
         if (isset($message)){
-        	foreach ($notificationSectionEditors as $userRole) {
-            	$notificationManager->createNotification(
-                	$userRole['id'], $message,
-                	$this->article->getLocalizedTitle(), $url, 1, NOTIFICATION_TYPE_SUPP_FILE_MODIFIED
-            	);
-       		}
+            	
+            $abstract =& $this->article->getAbstract(Locale::getLocale());
+
+            foreach ($notificationSectionEditors as $userRole) {
+                $notificationManager->createNotification(
+                    $userRole['id'], $message,
+                    $abstract->getScientificTitle(), $url, 1, NOTIFICATION_TYPE_SUPP_FILE_MODIFIED
+                );
+            }
         }
 		
 		return $this->suppFileId;

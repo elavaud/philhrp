@@ -30,17 +30,6 @@ define('STATUS_WITHDRAWN', 7);	// Withdrawn proposal
 define('STATUS_COMPLETED', 8);	// Completed proposal
 
 
-
-
-// AuthorSubmission::getSubmissionStatus will return one of these in place of QUEUED:
-//define('STATUS_PUBLISHED', 3);
-// define ('STATUS_QUEUED_UNASSIGNED', 5);
-// define ('STATUS_QUEUED_REVIEW', 6);
-// define ('STATUS_QUEUED_EDITING', 7);
-// define ('STATUS_INCOMPLETE', 8);
-// define('STATUS_SCHEDULED', 2); // #2187: Scheduling queue removed.
-
-
 // Author display in ToC
 define ('AUTHOR_TOC_DEFAULT', 0);
 define ('AUTHOR_TOC_HIDE', 1);
